@@ -280,6 +280,7 @@ export const TaskForm = ({
 							fullWidth
 							required
 							error={!!error && error.includes("Sprint")}
+							data-testid="sprint-select"
 						>
 							<InputLabel>Sprint</InputLabel>
 							<Select
@@ -359,6 +360,7 @@ export const TaskForm = ({
 							fullWidth
 							required
 							error={!!error && error.includes("Status")}
+							data-testid="status-select"
 						>
 							<InputLabel>Status</InputLabel>
 							<Select
