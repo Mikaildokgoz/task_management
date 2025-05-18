@@ -30,14 +30,17 @@ describe("TaskForm", () => {
 
 		// Check if form elements exist
 		expect(screen.getByLabelText(/subject/i)).toBeInTheDocument();
-		expect(
-			screen.getByRole("combobox", { name: /sprint/i })
-		).toBeInTheDocument();
-		expect(
-			screen.getByRole("combobox", { name: /status/i })
-		).toBeInTheDocument();
-		expect(
-			screen.getByRole("spinbutton", { name: /estimated hours/i })
-		).toBeInTheDocument();
+
+		// Check select components using data-testid
+		const sprintSelect = screen.getByTestId("sprint-select");
+		expect(sprintSelect).toBeInTheDocument();
+		expect(sprintSelect.querySelector("label")).toHaveTextContent(/sprint/i);
+
+		const statusSelect = screen.getByTestId("status-select");
+		expect(statusSelect).toBeInTheDocument();
+		expect(statusSelect.querySelector("label")).toHaveTextContent(/status/i);
+
+		// Check estimated hours input
+		expect(screen.getByLabelText(/estimated hours/i)).toBeInTheDocument();
 	});
 });
