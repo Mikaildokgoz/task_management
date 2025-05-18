@@ -1,0 +1,37 @@
+import { describe, it, expect, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { TaskForm } from "../TaskForm";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import taskReducer from "../../../features/task/taskSlice";
+
+// Mock store oluştur
+const store = configureStore({
+	reducer: {
+		task: taskReducer,
+	},
+});
+
+describe("TaskForm", () => {
+	const mockProps = {
+		open: true,
+		onClose: vi.fn(),
+		sprints: [],
+		tasks: [],
+		isUpdate: false,
+	};
+
+	it("renders form elements correctly", () => {
+		render(
+			<Provider store={store}>
+				<TaskForm {...mockProps} />
+			</Provider>
+		);
+
+		// Form elemanlarının varlığını kontrol et
+		expect(screen.getByLabelText(/subject/i)).toBeInTheDocument();
+		expect(screen.getByLabelText(/sprint/i)).toBeInTheDocument();
+		expect(screen.getByLabelText(/status/i)).toBeInTheDocument();
+		expect(screen.getByLabelText(/estimated hours/i)).toBeInTheDocument();
+	});
+});
