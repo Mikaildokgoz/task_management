@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import taskReducer from "../../../features/task/taskSlice";
 
-// Mock store oluştur
+// Create mock store
 const store = configureStore({
 	reducer: {
 		task: taskReducer,
@@ -28,7 +28,7 @@ describe("TaskForm", () => {
 			</Provider>
 		);
 
-		// Form elemanlarının varlığını kontrol et
+		// Check if form elements exist
 		expect(screen.getByLabelText(/subject/i)).toBeInTheDocument();
 		expect(screen.getByLabelText(/sprint/i)).toBeInTheDocument();
 		expect(screen.getByLabelText(/status/i)).toBeInTheDocument();
