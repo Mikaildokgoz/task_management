@@ -30,8 +30,14 @@ describe("TaskForm", () => {
 
 		// Check if form elements exist
 		expect(screen.getByLabelText(/subject/i)).toBeInTheDocument();
-		expect(screen.getByLabelText(/sprint/i)).toBeInTheDocument();
-		expect(screen.getByLabelText(/status/i)).toBeInTheDocument();
-		expect(screen.getByLabelText(/estimated hours/i)).toBeInTheDocument();
+		expect(
+			screen.getByRole("combobox", { name: /sprint/i })
+		).toBeInTheDocument();
+		expect(
+			screen.getByRole("combobox", { name: /status/i })
+		).toBeInTheDocument();
+		expect(
+			screen.getByRole("spinbutton", { name: /estimated hours/i })
+		).toBeInTheDocument();
 	});
 });
