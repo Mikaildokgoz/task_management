@@ -409,7 +409,7 @@ export const TaskForm = ({
 							)}
 						</FormControl>
 
-						<Box sx={{ minHeight: "300px" }}>
+						<Box sx={{ width: "100%" }}>
 							<Editor
 								apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
 								value={formData.description}
@@ -451,6 +451,11 @@ export const TaskForm = ({
 										"body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; }",
 								}}
 							/>
+							{error && error.includes("Description") && (
+								<FormHelperText error sx={{ ml: 1, mt: 0.5 }}>
+									{error}
+								</FormHelperText>
+							)}
 						</Box>
 					</Box>
 				</DialogContent>
