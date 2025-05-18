@@ -25,21 +25,19 @@ interface TaskDialogProps {
 export const TaskDialog = ({ open, onClose, task }: TaskDialogProps) => {
 	const dispatch = useAppDispatch();
 	const [formData, setFormData] = useState({
-		subject: "",
-		description: "",
-		status: "Open" as TaskStatus,
-		estimated_hours: 0,
+		subject: task.subject || "",
+		description: task.description || "",
+		status: task.status || ("Open" as TaskStatus),
+		estimated_hours: task.estimated_hours || 0,
 	});
 
 	useEffect(() => {
-		if (task) {
-			setFormData({
-				subject: task.subject,
-				description: task.description,
-				status: task.status,
-				estimated_hours: task.estimated_hours,
-			});
-		}
+		setFormData({
+			subject: task.subject || "",
+			description: task.description || "",
+			status: task.status || ("Open" as TaskStatus),
+			estimated_hours: task.estimated_hours || 0,
+		});
 	}, [task]);
 
 	const handleSubmit = async (e: React.FormEvent) => {
