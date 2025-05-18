@@ -16,8 +16,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 		storageKey: "task-management-auth",
 		storage: localStorage,
 		autoRefreshToken: true,
-		flowType: "pkce",
-		detectSessionInUrl: true,
+		flowType: "implicit",
 	},
 	global: {
 		headers: {
