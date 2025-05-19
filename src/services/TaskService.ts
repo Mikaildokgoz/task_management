@@ -24,8 +24,6 @@ export class TaskService {
 			updated_at: now,
 		};
 
-		console.log("Creating task with data:", JSON.stringify(taskData, null, 2));
-
 		const { data: task, error } = await supabase
 			.from("tasks")
 			.insert([taskData])
@@ -143,8 +141,6 @@ export class TaskService {
 					assignees: Array.isArray(child.assignees) ? child.assignees : [],
 				})),
 		}));
-
-		console.log("Task tree for sprint:", sprintId, taskTree);
 
 		return {
 			tasks: taskTree,
